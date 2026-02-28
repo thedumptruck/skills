@@ -1,6 +1,6 @@
 ---
 name: safe-golang
-description: Enforce "safe-golang", "Power of 10", and "TigerStyle" coding principles in Go. Use when writing, reading, reviewing, or refactoring Go code to ensure maximum safety, predictable execution, and zero technical debt.
+description: Enforce "safe-golang" coding principles in Go. Use when writing, reading, reviewing, or refactoring Go code to ensure maximum safety, predictable execution, and zero technical debt.
 ---
 
 # Safe Golang
@@ -124,3 +124,8 @@ func (s *Server) process(data []byte) {
 - Passing double pointers (e.g. `**Node`)
 - Creating unbounded channels (`make(chan T)`) or unbound loops
 - Making network requests without a timeout or context
+
+## Credits
+
+- [TIGER_STYLE.md](https://github.com/tigerbeetle/tigerbeetle/blob/main/docs/TIGER_STYLE.md)
+

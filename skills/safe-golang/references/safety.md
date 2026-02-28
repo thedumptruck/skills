@@ -104,41 +104,26 @@ func (s *Server) handleRequest(data []byte) {
 }
 ```
 
-## 4. Short Functions
+## 4. Split Compound Conditions
 
-Functions must fit on a single screen to be easily understood without scrolling. We enforce a **hard limit of 70 lines per function**.
-
-Push `if`s up and `for`s down. Keep all switch/if statements in the "parent" function, and move non-branchy logic fragments to helper functions.
+Compound conditions that evaluate multiple booleans make it difficult to verify that all cases are handled. Split compound conditions into simple conditions using nested `if/else` branches. Check positive and negative spaces thoroughly.
 
 **Don't:**
 ```go
-func processComplexLogic(data Data) {
-    if data.isValid() {
-        // ... 30 lines of logic ...
-        for _, item := range data.Items {
-            // ... 30 lines of inner logic ...
-        }
-    }
+if isValid && (count > 0 || force) {
+    // Complex condition hides behavior and cases
 }
 ```
 
 **Do:**
 ```go
-func processComplexLogic(data Data) {
-    if !data.isValid() {
-        return
-    }
-    processItems(data.Items)
+if !isValid {
+    return
 }
-
-func processItems(items []Item) {
-    for _, item := range items {
-        processItem(item)
-    }
-}
-
-func processItem(item Item) {
-    // ... focused logic ...
+if count > 0 {
+    // ...
+} else if force {
+    // ...
 }
 ```
 
@@ -146,7 +131,7 @@ func processItem(item Item) {
 
 Go does not have a built-in `assert` keyword, but we enforce the principle: **panic only for programmer errors/broken invariants, and return explicitly wrapped errors for all operational errors.**
 
-Use "pair assertions": assert validity right before writing and immediately after reading.
+Use "pair assertions": assert validity right before writing and immediately after reading. Assert both the *positive space* that you do expect AND the *negative space* that you do not expect.
 
 **Don't:**
 ```go
