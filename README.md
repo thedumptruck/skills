@@ -8,6 +8,7 @@ A collection of specialized skills and instructions for AI agents to enhance the
 |---|---|
 | [**safe-golang**](./skills/safe-golang) | Enforce "safe-golang" coding principles in Go. Use when writing, reading, reviewing, or refactoring Go code to ensure maximum safety, predictable execution, and zero technical debt. |
 | [**safe-ts**](./skills/safe-ts) | Enforce "safe-ts" coding principles in TypeScript. Use when writing, reading, reviewing, or refactoring TypeScript code to ensure maximum safety, predictable execution, and zero technical debt. |
+| [**safe-c**](./skills/safe-c) | Enforce "safe-c" coding principles in C. Use when writing, reading, reviewing, or refactoring C code to ensure maximum safety, predictable execution, and zero technical debt. |
 
 ## Structure
 
