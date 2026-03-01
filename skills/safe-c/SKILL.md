@@ -60,8 +60,6 @@ int process_items(const item_t* items, uint32_t items_count) {
         if (items[i].is_active) {
             if (items[i].value > THRESHOLD) {
                 // Handle specific positive case
-            } else {
-                // Explicitly handle the negative space
             }
         }
     }

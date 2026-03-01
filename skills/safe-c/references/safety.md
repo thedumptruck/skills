@@ -132,6 +132,7 @@ void process(void) {
 - Prefer early returns (guard clauses) over nested `if`/`else` blocks.
 - Simplify complex compound conditions by breaking them into discrete checks.
 - State invariants positively.
+- **Exhaustive branching**: All `if-else if` chains must terminate with an `else` block to handle unexpected cases. Standalone `if` statements do not require an `else` block if the negative case is a "no-op".
 
 **Don't:**
 ```c
@@ -143,6 +144,13 @@ if (is_valid) {
             // ...
         }
     }
+}
+
+// Redundant empty else for simple if
+if (items_count > 0) {
+    do_work();
+} else {
+    // Empty else adds clutter
 }
 ```
 
