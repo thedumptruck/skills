@@ -6,7 +6,8 @@ A collection of specialized skills and instructions for AI agents to enhance the
 
 | Skill | Description |
 |---|---|
-| [**safe-golang**](./skills/safe-golang) | Enforces rigorous safety, performance, and developer experience standards for Go programming, inspired by "The Power of 10" and "TigerStyle". Use to build highly predictable, robust, and performant Go applications with a "zero technical debt" policy. |
+| [**safe-golang**](./skills/safe-golang) | Enforce "safe-golang" coding principles in Go. Use when writing, reading, reviewing, or refactoring Go code to ensure maximum safety, predictable execution, and zero technical debt. |
+| [**safe-ts**](./skills/safe-ts) | Enforce "safe-ts" coding principles in TypeScript. Use when writing, reading, reviewing, or refactoring TypeScript code to ensure maximum safety, predictable execution, and zero technical debt. |
 
 ## Structure
 
@@ -22,7 +23,7 @@ When interacting with an AI agent equipped with these skills, you can explicitly
 
 *   *"Write a new HTTP handler for user login using safe-golang."*
 *   *"Review this PR for safe-golang violations."*
-*   *"Refactor this Go file to follow safe-golang principles."*
+*   *"Refactor this TypeScript file to follow safe-ts principles."*
 
 ## Adding a New Skill
 
