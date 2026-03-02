@@ -101,13 +101,14 @@ class BufferPool {
 
 const pool = new BufferPool(100, 1024);
 
-function processData(target: Uint8Array) {
+function processData(target: Uint8Array): Result<void, Error> {
     // Acquire from pool instead of `new Uint8Array(1024)`
     const buf = pool.acquire();
-    if (!buf) throw new Error("Pool exhausted"); // Panic (programmer error/capacity failure)
-    
+    if (!buf) return { ok: false, error: new Error("Pool exhausted") };
+
     try {
         // ... mutate target or buf in-place
+        return { ok: true, value: undefined };
     } finally {
         pool.release(buf);
     }

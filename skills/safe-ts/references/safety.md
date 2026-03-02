@@ -35,13 +35,16 @@ function processPayload(payload: any) {
 }
 
 // ✅ DO: Validate boundaries and assert invariants
-function processPayload(payload: unknown) {
+function processPayload(payload: unknown): Result<number, Error> {
     const parsed = schema.safeParse(payload);
     if (!parsed.success) return { ok: false, error: parsed.error };
-    
+
     const id = parsed.data.id;
     assert(id > 0, "Invariant violated: parsed ID must be strictly positive");
-    db.save(id);
+
+    const saveResult = db.save(id);
+    if (!saveResult.ok) return { ok: false, error: saveResult.error };
+
     return { ok: true, value: id };
 }
 ```

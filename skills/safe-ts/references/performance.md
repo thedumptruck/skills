@@ -17,7 +17,7 @@ function processStream(chunk: number[]) {
 }
 
 // ✅ DO: In-place mutation with pre-allocated arrays
-function processStream(chunk: number[], outBuffer: Uint8Array) {
+function processStream(chunk: number[], outBuffer: Uint8Array): void {
     outBuffer.fill(0); // Reset pre-allocated memory
     // ... mutate outBuffer directly
 }
@@ -43,10 +43,12 @@ function multiply(value: number, multiplier: number): number {
     return value * multiplier;
 }
 
-function processItems(items: Item[], multiplier: number) {
+function processItems(items: Item[], multiplier: number): void {
     const len = items.length;
     for (let i = 0; i < len; i++) {
-        items[i].value = multiply(items[i].value, multiplier);
+        const item = items[i];
+        if (item === undefined) break; // noUncheckedIndexedAccess guard
+        item.value = multiply(item.value, multiplier);
     }
 }
 ```

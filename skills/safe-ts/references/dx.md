@@ -46,10 +46,10 @@ function getFirstOrThrow(items: string[]) {
 
 // ✅ DO: Checking array bounds
 // tsconfig: noUncheckedIndexedAccess = true
-function getFirstOrThrow(items: string[]) {
+function getFirst(items: string[]): Result<string, Error> {
     const first = items[0]; // Type is string | undefined
-    if (first === undefined) throw new Error("List is empty");
-    return first.toUpperCase(); 
+    if (first === undefined) return { ok: false, error: new Error("List is empty") };
+    return { ok: true, value: first.toUpperCase() };
 }
 ```
 
